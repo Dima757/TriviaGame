@@ -1,5 +1,3 @@
-// Global Variables
-// =========================================
 var trivia = {
     initialScreen: "",
     correctCounter: 0,
@@ -17,12 +15,11 @@ var trivia = {
 
 };
 
-//FUNCTIONS
-//===========================================
+
 function startScreen(){
-  //Create the start button
+  
   trivia.initialScreen = "<p class='text-center main-button'><a class='btn btn-primary btn-lg start-button text-center' href='#'>Begin!</a></p>";
-  //Add Start button to main-area
+  
   $(".main-area").html(trivia.initialScreen);
 };
 
@@ -94,38 +91,37 @@ function generateHTML(){
 }
 
 
-//MAIN PROCESS
-//===========================================
+
 startScreen();
 
-//start-button click
+
 $("body").on("click", ".start-button", function(event){
 	event.preventDefault();
 	trivia.clickSound.play();
 	generateHTML();
 
 	timer();
-}); // Closes start-button click
+}); 
 
 $("body").on("click", ".answer", function(event){
 	trivia.clickSound.play();
-  //If correct answer
+  
   selectedAnswer = $(this).text();
 	if(selectedAnswer === trivia.correctAnswers[trivia.questionCounter]) {
 
 		clearInterval(trivia.clock);
 		win();
 	}
-  //If incorrect ansewr
+  
 	else {
 
 		clearInterval(trivia.clock);
 		loss();
 	}
-}); // Close .answer click
+}); 
 
-//reset-button click
+
 $("body").on("click", ".reset-button", function(event){
 	trivia.clickSound.play();
 	resetGame();
-}); // Closes reset-button click
+}); 
